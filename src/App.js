@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import { useState } from 'react';
+import New from './components/New';
 function App() {
+  const[mode,setMode]=useState('white');
+  const set=()=>{
+    if(mode==='white'){
+      setMode('black');
+      document.body.style.background='black';
+      document.body.style.color='white';
+    }
+    else{
+      setMode('white');
+      document.body.style.background='white';
+      document.body.style.color='black';
+    }
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={set} type='button'>click me</button>
+      <New styl={{mode}}/>
     </div>
   );
 }
-
 export default App;
